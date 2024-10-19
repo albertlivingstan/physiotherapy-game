@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Game</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0; /* Light grey background */
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s;
+            overflow: hidden; /* Prevent scrolling */
+        }
+        #gameCanvas {
+            border: 2px solid #333; /* Dark border for the canvas */
+            background-color: #fff; /* White background for the game */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            touch-action: none; /* Disable touch gestures on canvas */
+        }
+        #question-container {
+            display: none;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        #popup, #lose-popup {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049; /* Darker green */
+        }
+        #time-left {
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        /* Mobile styles */
+        @media (max-width: 600px) {
+            #jump-button {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 15px 30px;
+                font-size: 1.2em;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            #jump-button:hover {
+                background-color: #45a049;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    
+    <div id="question-container">
+        <h3 id="question-text"></h3>
+        <input type="text" id="answer-input" placeholder="Type your answer">
+        <button id="submit-answer">Submit</button>
+        <p>Time Left: <span id="time-left">10</span> seconds</p>
+    </div>
+
+    <div id="popup">Congratulations!</div>
+    <div id="lose-popup">
+        <h3>Game Over!</h3>
+        <p>You ran out of time or answered incorrectly.</p>
+        <button id="play-again">Try Again</button>
+    </div>
+
+    <!-- Jump button for mobile -->
+    <button id="jump-button" style="display:none;">Jump</button>
+
+    <script src="game2.js"></script>
+</body>
+</html>
